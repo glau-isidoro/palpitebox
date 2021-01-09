@@ -12,8 +12,12 @@
   "author": "Gláucia Isidoro",
   "license": "ISC",
   "dependencies": {
+    "autoprefixer": "^10.2.1",
     "next": "^10.0.5",
+    "postcss": "^8.2.4",
+    "postcss-import": "^14.0.0",
     "react": "^17.0.1",
-    "react-dom": "^17.0.1"
+    "react-dom": "^17.0.1",
+    "tailwindcss": "^2.0.2"
   }
 }
