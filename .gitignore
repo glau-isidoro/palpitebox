@@ -1,1 +1,8 @@
-node_modules
+# next.js build output
+.next
+
+# Dependency directories
+node_modules/
+
+# Logs
+npm-debug.log*
