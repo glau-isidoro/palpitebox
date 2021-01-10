@@ -1,12 +1,15 @@
 import React from 'react'
 import '../css/styles.css'
+import Header from '../components/header'
 
 
 const MyApp = ({ Component, pageProps }) => {
   return (
     <div>
-      <h1 className='bg-pink-500 p-8'>MyAPP</h1>
-      <Component {...pageProps}></Component>
+      <Header />
+      <div className='container mx-auto'>
+        <Component {...pageProps}></Component>
+      </div>
     </div>
   )
 }
