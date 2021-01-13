@@ -1,5 +1,9 @@
-.wrapper {
-  @apply bg-gray-200 p-4;
+.wrapperup {
+  @apply bg-indigo-700 p-4 shadow-md z-40;
+}
+
+.wrapperdown {
+  @apply bg-indigo-300 p-3 shadow-inner shadow-md text-center;
 }
 
 .box {

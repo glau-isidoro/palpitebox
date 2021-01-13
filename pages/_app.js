@@ -1,6 +1,7 @@
 import React from 'react'
 import '../css/styles.css'
 import Header from '../components/header'
+import Footer from '../components/footer'
 
 
 const MyApp = ({ Component, pageProps }) => {
@@ -8,8 +9,9 @@ const MyApp = ({ Component, pageProps }) => {
     <div>
       <Header />
       <div className='container mx-auto'>
-        <Component {...pageProps}></Component>
+        <Component {...pageProps} />
       </div>
+      <Footer />
     </div>
   )
 }
