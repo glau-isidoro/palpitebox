@@ -1,4 +1,6 @@
 .DS_Store
+.env.local
+credentials.json
 
 # next.js build output
 .next
