@@ -7,8 +7,6 @@ const Survey = () => {
       name: 'joana',
       email: 'joana@email',
       whatsapp: '1100000',
-      cupom: 'cupomcupom',
-      promo: 'pramocinha'
     }
     try {
       const response = await fetch('/api/save', {

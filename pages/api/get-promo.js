@@ -16,7 +16,7 @@ export default async (req, res) => {
     const textCell = sheet.getCell(1, 1)
 
     res.end(JSON.stringify({
-      showCoupon: showPromoCell.value === true,
+      showCoupon: showPromoCell.value,
       message: textCell.value
     }))
   } catch (err) {
