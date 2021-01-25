@@ -4,6 +4,11 @@ import { format } from 'date-fns'
 
 const doc = new GoogleSpreadsheet('1LjxaI0h9p1LqWM6la6ZZzQfLgum5ITocu388yq4_Bns')
 
+const cupomGenerator = (date) => {
+  const code = parseInt(format(date, 'mmSSSMMyyDDDssHH')).toString(16).toUpperCase()
+  return code.substr(0, 4) + '-' + code.substr(4, 4) + '-' + code.substr(8, 4)
+}
+
 export default async (req, res) => {
 
   try {
@@ -19,21 +24,21 @@ export default async (req, res) => {
 
     let cupom = ''
     let promo = ''
+    const today = new Date()
+    const data = JSON.parse(req.body)
 
     if (showPromoCell.value) {
-      // TODO: gerar cupom
-      cupom = 'temp-5678'
+      cupom = cupomGenerator(today)
       promo = textCell.value
     }
 
     const sheet = doc.sheetsByIndex[1]
-    const data = JSON.parse(req.body)
 
     await sheet.addRow({
       name: data.name,
       email: data.email,
       whatsapp: data.whatsapp,
-      date: format(new Date(), 'dd/MM/yyyy HH:mm'),
+      date: format(today, 'dd/MM/yyyy HH:mm'),
       rate: 5,
       cupom,
       promo,
