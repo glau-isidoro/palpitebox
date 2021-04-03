@@ -39,13 +39,17 @@ export default async (req, res) => {
       email: data.email,
       whatsapp: data.whatsapp,
       date: format(today, 'dd/MM/yyyy HH:mm'),
-      rate: 5,
+      rate: data.rate,
       cupom,
       promo,
       active: true,
     })
 
-    res.end(req.body)
+    res.end(JSON.stringify({
+      showCoupon: cupom !== '',
+      cupom,
+      promo
+    }))
 
   } catch (err) {
     console.log(err)
