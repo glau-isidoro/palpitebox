@@ -1,8 +1,7 @@
 import { GoogleSpreadsheet } from 'google-spreadsheet'
-import credentials from '../../credentials.json'
 import { format } from 'date-fns'
 
-const doc = new GoogleSpreadsheet('1LjxaI0h9p1LqWM6la6ZZzQfLgum5ITocu388yq4_Bns')
+const doc = new GoogleSpreadsheet(process.env.SHEET_DOC_ID)
 
 const cupomGenerator = (date) => {
   const code = parseInt(format(date, 'mmSSSMMyyDDDssHH')).toString(16).toUpperCase()
@@ -13,7 +12,10 @@ export default async (req, res) => {
 
   try {
     console.log(JSON.parse(req.body))
-    await doc.useServiceAccountAuth(credentials)
+    await doc.useServiceAccountAuth({
+      client_email: process.env.SHEET_CLIENT_EMAIL,
+      private_key: process.env.SHEET_PRIVATE_KEY
+    })
     await doc.loadInfo()
 
     const sheetConfig = doc.sheetsByIndex[2]
