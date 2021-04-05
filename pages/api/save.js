@@ -3,6 +3,11 @@ import { format } from 'date-fns'
 
 const doc = new GoogleSpreadsheet(process.env.SHEET_DOC_ID)
 
+const fromBase64 = value => {
+  const buff = Buffer.from(value, 'base64');
+  return buff.toString('ascii');
+}
+
 const cupomGenerator = (date) => {
   const code = parseInt(format(date, 'mmSSSMMyyDDDssHH')).toString(16).toUpperCase()
   return code.substr(0, 4) + '-' + code.substr(4, 4) + '-' + code.substr(8, 4)
@@ -11,10 +16,9 @@ const cupomGenerator = (date) => {
 export default async (req, res) => {
 
   try {
-    console.log(JSON.parse(req.body))
     await doc.useServiceAccountAuth({
       client_email: process.env.SHEET_CLIENT_EMAIL,
-      private_key: process.env.SHEET_PRIVATE_KEY
+      private_key: fromBase64(process.env.SHEET_PRIVATE_KEY)
     })
     await doc.loadInfo()
 
