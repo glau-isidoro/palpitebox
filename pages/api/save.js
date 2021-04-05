@@ -42,6 +42,7 @@ export default async (req, res) => {
       whatsapp: data.whatsapp,
       date: format(today, 'dd/MM/yyyy HH:mm'),
       rate: data.rate,
+      opinion: data.opinion,
       cupom,
       promo,
       active: true,

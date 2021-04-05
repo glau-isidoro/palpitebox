@@ -6,7 +6,8 @@ const Survey = () => {
     name: '',
     email: '',
     whatsapp: '',
-    rate: 0
+    rate: 0,
+    opinion: ''
   })
   const rateValues = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
   const [success, setSuccess] = useState(false)
@@ -50,6 +51,10 @@ const Survey = () => {
         
         <label className='font-bold'>Whatsapp:</label>
         <input type='text' className='bg-blue-100 p-4 block shadow my-2 rounded' placeholder='Whatsapp' onChange={onChange} name='whatsapp' value={form.whatsapp} />
+
+
+        <label className='font-bold'>Conte sua opinião, crítica ou sugestão:</label>
+        <input type='text' className='bg-blue-100 p-4 block shadow my-2 rounded' placeholder='...' onChange={onChange} name='opinion' value={form.opinion} />
         
         <label className='font-bold'>Qual nota você dá pra esse estabelecimento?</label>
         <div className='flex'>
